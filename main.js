@@ -9,14 +9,24 @@ for (var i = 0; i < classmates.length; i++) {
 	console.log(classmates[i] + " got " + grade[i] + "% on the test");
 };
 
-
 //Exercise #2
- $("form").submit(function(event) {
- 	var userInput = document.getElementById("input");
- 	var age = userInput.value;
- 	alert("You are " + (2015 - age) + " years old");
- 	event.preventDefault();
- });
 
+//create on submit event
+$("#ageForm").submit(function(event) {
+	event.preventDefault();
+
+//capture birth year value from the input value
+	var birthYear = $("#birthYear").val();
+	var age = 2015 - birthYear;
+	var ageNumber = parseInt(birthYear);
+
+//if input is not a number, alert user to enter a number
+	if((1885 < ageNumber) && (2016 > ageNumber)) {
+		$("#calcAge").html("You are " + age + " years old");
+	} else {
+		$("#calcAge").html("Please enter a valid 4 digit year between 1885 and 2016");
+	};
+
+});
 
 });
